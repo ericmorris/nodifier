@@ -1,0 +1,26 @@
+{
+  "name": "Nodifier",
+  "version": "0.0.0",
+  "description": "email notifier",
+  "main": "web.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericmorris/nodifier.git"
+  },
+  "keywords": [
+    "emailer"
+  ],
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ericmorris/nodifier/issues"
+  },
+  "homepage": "https://github.com/ericmorris/nodifier",
+  "dependencies": {
+    "nodemailer": "~0.6.0",
+    "express": "~3.4.8"
+  }
+}
