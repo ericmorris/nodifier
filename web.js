@@ -20,7 +20,7 @@ app.get('/errorpage', function(req, res){
 		//railsbangalore@crri.co.in
     	subject: "Solaro Brochure Error Page Accessed", // Subject line
     	text: "Solaro Brochure Error Page Accessed text", // plaintext body
-    	html: "<b>Solaro Brochure Error Page Accessed. Something has caused S</b>" // html body
+    	html: "<b>Solaro Brochure Error Page Accessed. Something has caused Solaro to redirect to Heroku Error Page</b>" // html body
 	}
 
 	console.log("Request received and about to mail.");
