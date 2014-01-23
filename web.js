@@ -2,7 +2,7 @@ var express = require('express')
 var app = module.exports = express.createServer()
   , SolaroURL = "https://app.solaro.com";
 
-app.get('/errorpage', function(req, res){
+app.get('/', function(req, res){
   var nodemailer = require("nodemailer");
 
 	// create reusable transport method (opens pool of SMTP connections)
@@ -39,5 +39,5 @@ app.get('/errorpage', function(req, res){
 	res.end();
 });
 
-app.listen();
+app.listen(80);
 
