@@ -22,7 +22,7 @@ app.get('/', function(req, res){
     	html: "<b>Solaro Brochure Error Page Accessed. Something has caused Solaro to redirect to Heroku Error Page</b>" // html body
 	}
 
-	;console.log("Request received and about to mail.");
+	//console.log("Request received and about to mail.");
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
     	if(error){
