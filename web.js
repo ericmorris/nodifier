@@ -1,5 +1,4 @@
 var express = require("express");
-//var logfmt = require("logfmt");
 var app = express();
 
 
@@ -19,9 +18,9 @@ app.get('/', function(req, res){
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
     	to: "emorris@castlerockresearch.com,eric.p.morris@gmail.com", // list of receivers
 		//railsbangalore@crri.co.in
-    	subject: "Solaro Brochure Error Page Accessed", // Subject line
-    	text: "Solaro Brochure Error Page Accessed text", // plaintext body
-    	html: "<b>Solaro Brochure Error Page Accessed. Something has caused Solaro to redirect to Heroku Error Page</b>" // html body
+    	subject: "Solaro Brochure Error Page Hit", // Subject line
+    	text: "Solaro Brochure Error Page Hit text", // plaintext body
+    	html: "<b>Solaro Brochure error page has been hit.</b>" // html body
 	}
 
 	//console.log("Request received and about to mail.");
@@ -36,7 +35,7 @@ app.get('/', function(req, res){
 	});
 		
 	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write("Solaro application error has occurred. Please try again in a few moments");
+	res.write(" A Solaro application error has occurred while processing your request.\n Try pressing the back button and trying again. \n\n We have been notified and are working on a solution to this error.");
 	res.end();
 });
 
