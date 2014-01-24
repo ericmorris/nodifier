@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	to: "emorris@castlerockresearch.com", // list of receivers
+    	to: "emorris@castlerockresearch.com,eric.p.morris@gmail.com", // list of receivers
 		//railsbangalore@crri.co.in
     	subject: "Solaro Brochure Error Page Accessed", // Subject line
     	text: "Solaro Brochure Error Page Accessed text", // plaintext body
