@@ -21,8 +21,6 @@ app.get('/', function(req, res){
     	text: "Solaro Brochure Error Page Hit text", // plaintext body
     	html: "<b>Solaro Brochure error page has been hit.</b>" // html body
 	}
-
-	//console.log("Request received and about to mail.");
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
     	if(error){
