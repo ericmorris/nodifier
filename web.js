@@ -17,9 +17,9 @@ app.get('/', function(req, res){
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
     	to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
-    	subject: "Solaro Brochure Error Page Hit", // Subject line
-    	text: "Solaro Brochure Error Page Hit text", // plaintext body
-    	html: "<b>Solaro Brochure error page has been hit.</b>" // html body
+    	subject: "Solaro Error Page Hit", // Subject line
+    	text: "Solaro Error Page Hit", // plaintext body
+    	html: "<b>Solaro error page has been hit.</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
