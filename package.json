@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "email notifier",
   "main": "web.js",
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ericmorris/nodifier.git"
