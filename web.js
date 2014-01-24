@@ -16,8 +16,7 @@ app.get('/', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	to: "emorris@castlerockresearch.com,eric.p.morris@gmail.com", // list of receivers
-		//railsbangalore@crri.co.in
+    	to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro Brochure Error Page Hit", // Subject line
     	text: "Solaro Brochure Error Page Hit text", // plaintext body
     	html: "<b>Solaro Brochure error page has been hit.</b>" // html body
@@ -35,7 +34,7 @@ app.get('/', function(req, res){
 	});
 		
 	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" A Solaro application error has occurred while processing your request.\n Try pressing the back button and trying again. \n\n We have been notified and are working on a solution to this error.");
+	res.write(" A Solaro application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
 	res.end();
 });
 
