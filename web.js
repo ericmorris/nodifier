@@ -16,7 +16,8 @@ app.get('/solaro', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
+		to: "error_notification@crri.co.in",
+    	//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro Error Page has been accessed", // Subject line
     	text: "Solaro Error Page has been accessed", // plaintext body
     	html: "<b>Solaro error page has been hit.</b>" // html body
@@ -51,8 +52,8 @@ app.get('/securo', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	//to: "emorris@castlerockresearch.com",
-		to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
+		to: "error_notification@crri.co.in",
+		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Securo Error Page Hit", // Subject line
     	text: "Securo Error Page Hit", // plaintext body
     	html: "<b>Securo error page has been hit.</b>" // html body
@@ -87,8 +88,8 @@ app.get('/solaro-in-brochure', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	//to: "emorris@castlerockresearch.com",
-		to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
+		to: "error_notification@crri.co.in",
+		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro-in-brochure Error Page has been accessed", // Subject line
     	text: "Solaro-in-brochure Error Page has been accessed", // plaintext body
     	html: "<b>Solaro-in-brochure error page has been accessed.</b>" // html body
@@ -123,7 +124,8 @@ app.get('/maintenance_solaro', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
+		to: "error_notification@crri.co.in",
+		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro Maintenance Page has been accessed", // Subject line
     	text: "Solaro Maintenance Page has been accessed", // plaintext body
     	html: "<b>Solaro Maintenance page has been hit.</b>" // html body
@@ -158,7 +160,8 @@ app.get('/maintenance_securo', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
+		to: "error_notification@crri.co.in",
+		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Securo Maintenance Page has been accessed", // Subject line
     	text: "Securo Maintenance Page has been accessed", // plaintext body
     	html: "<b>Securo Maintenance page has been accessed.</b>" // html body
