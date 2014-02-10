@@ -51,7 +51,7 @@ app.get('/securo', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-    	to: emorris@castlerockresearch.com",
+    	to: "emorris@castlerockresearch.com",
 		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Securo Error Page Hit", // Subject line
     	text: "Securo Error Page Hit", // plaintext body
