@@ -73,7 +73,7 @@ app.get('/securo', function(req, res){
 	res.end();
 });
 
-//SECURO ERROR
+//SOLARO-IN-BROCHURE ERROR
 app.get('/solaro-in-brochure', function(req, res){
   var nodemailer = require("nodemailer");
 
