@@ -41,7 +41,7 @@ app.get('/solaro', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
-    	html: "<b>Solaro app error page accessed at "+getDateTime()+" MST.</b>" // html body
+    	html: "<b>Solaro app error page accessed on "+getDateTime()+" MST.</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -76,7 +76,7 @@ app.get('/securo', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Securo Error Page Accessed", // Subject line
     	text: "Securo Error Page Accessed", // plaintext body
-    	html: "<b>Securo app error page accessed at "+getDateTime()+" MST.</b>" // html body
+    	html: "<b>Securo app error page accessed on "+getDateTime()+" MST.</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -112,7 +112,7 @@ app.get('/solaro-in-brochure', function(req, res){
 		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro-in-brochure Error Page Accessed", // Subject line
     	text: "Solaro-in-brochure Error Page Accessed", // plaintext body
-    	html: "<b>Solaro-in-brochure app error page accessed at "+getDateTime()+" MST.</b>" // html body
+    	html: "<b>Solaro-in-brochure app error page accessed on "+getDateTime()+" MST.</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -148,7 +148,7 @@ app.get('/maintenance_solaro', function(req, res){
 		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro Maintenance Page Accessed", // Subject line
     	text: "Solaro Maintenance Page Accessed", // plaintext body
-    	html: "<b>Solaro Maintenance maintenance page accessed at "+getDateTime()+" MST..</b>" // html body
+    	html: "<b>Solaro Maintenance maintenance page accessed on "+getDateTime()+" MST..</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -184,7 +184,7 @@ app.get('/maintenance_securo', function(req, res){
 		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Securo Maintenance Page Accessed", // Subject line
     	text: "Securo Maintenance Page Accessed", // plaintext body
-    	html: "<b>Securo Maintenance page accessed at "+getDateTime()+" MST.</b>" // html body
+    	html: "<b>Securo Maintenance page accessed on "+getDateTime()+" MST.</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
