@@ -24,7 +24,7 @@ function getDateTime() {
 
     return year + ":" + month + ":" + day + " at " + hour + ":" + min + ":" + sec;
 }
-//SOLARO
+//1.SOLARO
 app.get('/solaro', function(req, res){
   var nodemailer = require("nodemailer");
 
@@ -42,7 +42,9 @@ app.get('/solaro', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
-    	html: "<b>Solaro app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+    	//html: "<b>Solaro app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+		html: "<b>Solaro app error page accessed</b>" // html body
+
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -59,7 +61,7 @@ app.get('/solaro', function(req, res){
 	res.end();
 });
 
-//SECURO ERROR
+//2.SECURO ERROR
 app.get('/securo', function(req, res){
   var nodemailer = require("nodemailer");
 
@@ -77,7 +79,9 @@ app.get('/securo', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Securo Error Page Accessed", // Subject line
     	text: "Securo Error Page Accessed", // plaintext body
-    	html: "<b>Securo app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+    	//html: "<b>Securo app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+		html: "<b>Securo app error page accessed</b>" // html body
+
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -94,7 +98,7 @@ app.get('/securo', function(req, res){
 	res.end();
 });
 
-//SOLARO-IN-BROCHURE ERROR
+//3.SOLARO-IN-BROCHURE ERROR
 app.get('/solaro-in-brochure', function(req, res){
   var nodemailer = require("nodemailer");
 
@@ -110,10 +114,11 @@ app.get('/solaro-in-brochure', function(req, res){
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
 		to: "error_notification@crri.co.in",
-		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro-in-brochure Error Page Accessed", // Subject line
     	text: "Solaro-in-brochure Error Page Accessed", // plaintext body
-    	html: "<b>Solaro-in-brochure app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+    	//html: "<b>Solaro-in-brochure app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+		html: "<b>Solaro-in-brochure app error page accessed</b>" // html body
+
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -130,7 +135,7 @@ app.get('/solaro-in-brochure', function(req, res){
 	res.end();
 });
 
-//SOLARO MAINTENANCE
+//4.SOLARO MAINTENANCE
 app.get('/maintenance_solaro', function(req, res){
   var nodemailer = require("nodemailer");
 
@@ -146,10 +151,10 @@ app.get('/maintenance_solaro', function(req, res){
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
 		to: "error_notification@crri.co.in",
-		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Solaro Maintenance Page Accessed", // Subject line
     	text: "Solaro Maintenance Page Accessed", // plaintext body
-    	html: "<b>Solaro Maintenance maintenance page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+    	//html: "<b>Solaro Maintenance maintenance page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+		html: "<b>Solaro app maintenance page accessed</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -166,7 +171,7 @@ app.get('/maintenance_solaro', function(req, res){
 	res.end();
 });
 
-//SECURO MAINTENANCE
+//5.SECURO MAINTENANCE
 app.get('/maintenance_securo', function(req, res){
   var nodemailer = require("nodemailer");
 
@@ -182,10 +187,11 @@ app.get('/maintenance_securo', function(req, res){
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
 		to: "error_notification@crri.co.in",
-		//to: "railsbangalore@crri.co.in,it-team@castlerockresearch.com", // list of receivers
     	subject: "Securo Maintenance Page Accessed", // Subject line
     	text: "Securo Maintenance Page Accessed", // plaintext body
-    	html: "<b>Securo Maintenance page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+    	//html: "<b>Securo Maintenance page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
+		html: "<b>Securo app maintenance page accessed</b>" // html body
+
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
