@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 
 //datestamp
+/*
 function getDateTime() {
     var date = new Date();
 
@@ -24,6 +25,8 @@ function getDateTime() {
 
     return year + ":" + month + ":" + day + " at " + hour + ":" + min + ":" + sec;
 }
+*/
+
 //1.SOLARO
 app.get('/solaro', function(req, res){
   var nodemailer = require("nodemailer");
