@@ -106,12 +106,12 @@ app.get('/securo', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	res.end();
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
 	
 	
-	/*res.writeHead(200, {'Content-Type': 'text/html'});
+	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
 	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
@@ -120,7 +120,7 @@ app.get('/securo', function(req, res){
 	'\n</body>\n</html>');
 
 	res.end();
-	*/
+	
 });
 
 //3.SOLARO-IN-BROCHURE ERROR
@@ -155,11 +155,11 @@ app.get('/solaro-in-brochure', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	res.end();
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
 	
-	/*
+	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
@@ -169,7 +169,7 @@ app.get('/solaro-in-brochure', function(req, res){
 	'\n</body>\n</html>');
 
 	res.end();
-	*/
+	
 });
 
 //4.SOLARO MAINTENANCE
@@ -203,11 +203,11 @@ app.get('/maintenance_solaro', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	res.end();
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
 	
-	/*
+	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
@@ -217,7 +217,7 @@ app.get('/maintenance_solaro', function(req, res){
 	'\n</body>\n</html>');
 
 	res.end();
-	*/
+	
 });
 
 //5.SECURO MAINTENANCE
@@ -252,11 +252,11 @@ app.get('/maintenance_securo', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	res.end();
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
 	
-	/*
+	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
@@ -266,7 +266,7 @@ app.get('/maintenance_securo', function(req, res){
 	'\n</body>\n</html>');
 
 	res.end();
-	*/
+	
 });
 
 
