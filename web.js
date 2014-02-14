@@ -132,7 +132,6 @@ app.get('/solaro-in-brochure', function(req, res){
 	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
 	res.end();
 	
-	/*
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
@@ -141,7 +140,6 @@ app.get('/solaro-in-brochure', function(req, res){
 	'<div id="content"><p><center>A Solaro error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
 	'\n</body>\n</html>');
 	res.end();
-	*/
 });
 
 //4.SOLARO MAINTENANCE
