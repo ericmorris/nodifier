@@ -59,8 +59,18 @@ app.get('/solaro', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
+	
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write('<!doctype html>\n<html lang="en">\n' +
+	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
+	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>A Solaro error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'\n</body>\n</html>');
+
 	res.end();
 });
 
@@ -96,8 +106,18 @@ app.get('/securo', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
+	
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write('<!doctype html>\n<html lang="en">\n' +
+	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
+	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>An error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'\n</body>\n</html>');
+
 	res.end();
 });
 
@@ -133,8 +153,18 @@ app.get('/solaro-in-brochure', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
+	
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write('<!doctype html>\n<html lang="en">\n' +
+	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
+	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>A Solaro error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'\n</body>\n</html>');
+
 	res.end();
 });
 
@@ -169,8 +199,18 @@ app.get('/maintenance_solaro', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
+	
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write('<!doctype html>\n<html lang="en">\n' +
+	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
+	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>We Are Currently Updating Solaro</p><ul><li>We are updating Solaro<br> in order to enhance your Solaro experience.<br><br>Please try back in a minute.</center></li></ul></div>' +
+	'\n</body>\n</html>');
+
 	res.end();
 });
 
@@ -206,9 +246,20 @@ app.get('/maintenance_securo', function(req, res){
     	smtpTransport.close();
 	});
 		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	//res.end();
+	
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write('<!doctype html>\n<html lang="en">\n' +
+	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
+	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>We Are Currently Updating</p><ul><li>We are updating<br> in order to enhance your Solaro experience.<br><br>Please try back in a minute.</center></li></ul></div>' +
+	'\n</body>\n</html>');
+
 	res.end();
+});
 });
 
 var port = Number(process.env.PORT || 5000);
