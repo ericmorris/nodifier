@@ -19,7 +19,6 @@ app.get('/solaro', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
-    	//html: "<b>Solaro app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
 		html: "<b>Solaro app error page accessed</b>" // html body
 
 	}
@@ -65,7 +64,6 @@ app.get('/securo', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Securo Error Page Accessed", // Subject line
     	text: "Securo Error Page Accessed", // plaintext body
-    	//html: "<b>Securo app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
 		html: "<b>Securo app error page accessed</b>" // html body
 
 	}
@@ -114,7 +112,6 @@ app.get('/solaro-in-brochure', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Solaro-in-brochure Error Page Accessed", // Subject line
     	text: "Solaro-in-brochure Error Page Accessed", // plaintext body
-    	//html: "<b>Solaro-in-brochure app error page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
 		html: "<b>Solaro-in-brochure app error page accessed</b>" // html body
 
 	}
@@ -160,7 +157,6 @@ app.get('/maintenance_solaro', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Solaro Maintenance Page Accessed", // Subject line
     	text: "Solaro Maintenance Page Accessed", // plaintext body
-    	//html: "<b>Solaro Maintenance maintenance page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
 		html: "<b>Solaro app maintenance page accessed</b>" // html body
 	}
 	
@@ -176,6 +172,7 @@ app.get('/maintenance_solaro', function(req, res){
 	//res.writeHead(200, {"Content-Type": "text/plain"});
 	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
 	//res.end();
+	
 	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
@@ -206,7 +203,6 @@ app.get('/maintenance_securo', function(req, res){
 		to: "error_notification@crri.co.in",
     	subject: "Securo Maintenance Page Accessed", // Subject line
     	text: "Securo Maintenance Page Accessed", // plaintext body
-    	//html: "<b>Securo Maintenance page accessed on "+getDateTime()+" UTC/GMT.</b>" // html body
 		html: "<b>Securo app maintenance page accessed</b>" // html body
 
 	}
@@ -220,10 +216,11 @@ app.get('/maintenance_securo', function(req, res){
     	smtpTransport.close();
 	});
 		
-	//res.writeHead(200, {"Content-Type": "text/plain"});
-	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	//res.end();
+	res.writeHead(200, {"Content-Type": "text/plain"});
+	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
+	res.end();
 	
+	/*
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
@@ -232,11 +229,11 @@ app.get('/maintenance_securo', function(req, res){
 	'<div id="content"><p><center>We are currently upgrading</p><ul><li>We are upgrading Solaro<br> in order to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
 	'\n</body>\n</html>');
 	res.end();
-	
+	*/
 });
 
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
-  console.log("Listening on " + port);
+console.log("Listening on " + port);
 });
