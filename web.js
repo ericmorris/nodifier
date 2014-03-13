@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-
+var counter = 0;
 //1.SOLARO
 app.get('/solaro', function(req, res){
   var nodemailer = require("nodemailer");
@@ -35,7 +35,8 @@ app.get('/solaro', function(req, res){
 	//res.writeHead(200, {"Content-Type": "text/plain"});
 	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
 	//res.end();
-	
+	counter++
+	console.log("Counter is: " + counter);
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
