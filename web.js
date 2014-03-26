@@ -1,6 +1,8 @@
 var express = require("express");
 var app = express();
 var counter = 0;
+
+//changes
 //1.SOLARO
 app.get('/solaro', function(req, res){
   var nodemailer = require("nodemailer");
