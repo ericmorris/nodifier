@@ -1,8 +1,8 @@
 var express = require("express");
 var app = express();
 var counter = 0;
+var lastFail = new Date();
 
-//changes
 //1.SOLARO
 app.get('/solaro', function(req, res){
   var nodemailer = require("nodemailer");
@@ -18,11 +18,11 @@ app.get('/solaro', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-		to: "error_notification@crri.co.in",
+		//to: "error_notification@crri.co.in",
+		to: "emorris@castlerockresearch.com",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
 		html: "<b>Solaro app error page accessed</b>" // html body
-
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
