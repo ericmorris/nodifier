@@ -1,25 +1,38 @@
 var express = require("express");
 var app = express();
-var counter = 0;
-var lastFail = new Date();
+//var counter = 0;
+var solarocounter = 0;
+var securocounter = 0;
+var brochurecounter = 0;
+var solmaintcounter = 0;
+var secmaintcounter = 0;
 
-//1.SOLARO
-app.get('/solaro', function(req, res){
-  var nodemailer = require("nodemailer");
+var lastSolFail = new Date();
+var lastSecFail = new Date();
+var lastBroFail = new Date();
+var lastSolMFail = new Date();
+var lastSecMFail = new Date();
 
-	// create reusable transport method (opens pool of SMTP connections)
-	var smtpTransport = nodemailer.createTransport("SMTP",{
+
+var nodemailer = require("nodemailer");
+  
+  // create reusable transport method (opens pool of SMTP connections)
+  var smtpTransport = nodemailer.createTransport("SMTP",{
     	service: "Gmail",
     	auth: {
         	user: "solaroerror@crri.co.in",
         	pass: "3xt3rm1n80r"
     	}
 	});
+	
+
+
+//1.SOLARO
+app.get('/solaro', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
 		to: "error_notification@crri.co.in",
-		//to: "emorris@castlerockresearch.com",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
 		html: "<b>Solaro app error page accessed</b>" // html body
@@ -33,12 +46,33 @@ app.get('/solaro', function(req, res){
    			}
     	smtpTransport.close();
 	});
+	
+	function resetSolaroCount() {
+	solarocounter = 0;
+	}
+	
+	var thisSolFail = new Date();
+	
+	//If 10 minutes have passed since last failure, reset the counter to 0. Emergency over.
+	if((thisSolFail.getTime() - lastSolFail.getTime()) > 600000){
+		resetSolaroCount();
+		lastSolFail.setTime(thisSolFail.getTime());
+
+	//else increment the counter, and update the time of last failure.
+	}else{
+		solarocounter++
+		lastSolFail.setTime(thisSolFail.getTime());
 		
-	//res.writeHead(200, {"Content-Type": "text/plain"});
-	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	//res.end();
-	counter++
-	console.log("Counter is: " + counter);
+		//Send out sms at counts 5 and 10
+		if(solarocounter == 5) {
+			console.log("Send SMS 1");
+			}
+		if(solarocounter == 10){
+			console.log("SEND SMS 2 please reset dyno");
+		}	
+		console.log("Solaro Error Count: "+solarocounter);
+	}
+
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
@@ -49,18 +83,9 @@ app.get('/solaro', function(req, res){
 	res.end();
 });
 
+
 //2.SECURO ERROR
 app.get('/securo', function(req, res){
-  var nodemailer = require("nodemailer");
-
-	// create reusable transport method (opens pool of SMTP connections)
-	var smtpTransport = nodemailer.createTransport("SMTP",{
-    	service: "Gmail",
-    	auth: {
-        	user: "solaroerror@crri.co.in",
-        	pass: "3xt3rm1n80r"
-    	}
-	});
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
@@ -68,7 +93,6 @@ app.get('/securo', function(req, res){
     	subject: "Securo Error Page Accessed", // Subject line
     	text: "Securo Error Page Accessed", // plaintext body
 		html: "<b>Securo app error page accessed</b>" // html body
-
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -79,36 +103,44 @@ app.get('/securo', function(req, res){
    			}
     	smtpTransport.close();
 	});
-		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	res.end();
 	
-	/*
+	function resetSecuroCount() {
+	securocounter = 0;
+	}	
+		
+	var thisSecFail = new Date();
+	
+	//If 10 minutes have passed since last failure, reset the counter to 0. Emergency over.
+	if((thisSecFail.getTime() - lastSecFail.getTime()) > 600000){
+		resetSecuroCount();
+		lastSecFail.setTime(thisSecFail.getTime());
+	}else{
+		securocounter++
+		lastSecFail.setTime(thisSecFail.getTime());
+		
+		//Send out sms at counts 5 and 10
+		if(securocounter == 5) {
+			console.log("Send SMS 1");
+			}
+		if(securocounter == 10){
+			console.log("SEND SMS 2 - reset dyno");
+		}	
+		console.log("Securo Error Count: "+securocounter);
+	}
+
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
 	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
 	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
-	'<div id="content"><p><center>An error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'<div id="content"><p><center>A Securo error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
 	'\n</body>\n</html>');
 	res.end();
-	*/
 	
 });
 
 //3.SOLARO-IN-BROCHURE ERROR
 app.get('/solaro-in-brochure', function(req, res){
-  var nodemailer = require("nodemailer");
-
-	// create reusable transport method (opens pool of SMTP connections)
-	var smtpTransport = nodemailer.createTransport("SMTP",{
-    	service: "Gmail",
-    	auth: {
-        	user: "solaroerror@crri.co.in",
-        	pass: "3xt3rm1n80r"
-    	}
-	});
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
@@ -116,7 +148,6 @@ app.get('/solaro-in-brochure', function(req, res){
     	subject: "Solaro-in-brochure Error Page Accessed", // Subject line
     	text: "Solaro-in-brochure Error Page Accessed", // plaintext body
 		html: "<b>Solaro-in-brochure app error page accessed</b>" // html body
-
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -127,40 +158,49 @@ app.get('/solaro-in-brochure', function(req, res){
    			}
     	smtpTransport.close();
 	});
+
+	function resetBrochureCount() {
+	brochurecounter = 0;
+	}		
+	var thisBroFail = new Date();
+	
+	//If 10 minutes have passed since last failure, reset the counter to 0. Emergency over.
+	if((thisBroFail.getTime() - lastBroFail.getTime()) > 600000){
+		resetBrochureCount();
+		lastBroFail.setTime(thisBroFail.getTime());
+	}else{
+		brochurecounter++
+		lastBroFail.setTime(thisBroFail.getTime());
 		
-	//res.writeHead(200, {"Content-Type": "text/plain"});
-	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	//res.end();
+		//Send out sms at counts 5 and 10
+		if(brochurecounter == 5) {
+			console.log("Send SMS 1");
+			}
+		if(brochurecounter == 10){
+			console.log("SEND SMS 2 - reset dyno");
+		}	
+		console.log("Solaro Brochure Error Count: "+brochurecounter);
+	}
 	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
 	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
 	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
-	'<div id="content"><p><center>A Solaro error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'<div id="content"><p><center>A Solaro brochure error has occurred</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
 	'\n</body>\n</html>');
 	res.end();
 });
 
 //4.SOLARO MAINTENANCE
 app.get('/maintenance_solaro', function(req, res){
-  var nodemailer = require("nodemailer");
-
-	// create reusable transport method (opens pool of SMTP connections)
-	var smtpTransport = nodemailer.createTransport("SMTP",{
-    	service: "Gmail",
-    	auth: {
-        	user: "solaroerror@crri.co.in",
-        	pass: "3xt3rm1n80r"
-    	}
-	});
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
 		to: "error_notification@crri.co.in",
-    	subject: "Solaro Maintenance Page Accessed", // Subject line
+    	subject: "Solaro Maintenance Error Page Accessed", // Subject line
     	text: "Solaro Maintenance Page Accessed", // plaintext body
-		html: "<b>Solaro app maintenance page accessed</b>" // html body
+		html: "<b>Solaro Maintenance Page Accessed</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -171,18 +211,37 @@ app.get('/maintenance_solaro', function(req, res){
    			}
     	smtpTransport.close();
 	});
+	
+	function resetSolMaintCount() {
+		solmaintcounter = 0;
+	}	
+	var thisSolMFail = new Date();
+	
+	
+	//If 10 minutes have passed since last failure, reset the counter to 0. Emergency over.
+	if((thisSolMFail.getTime() - lastSolMFail.getTime()) > 600000){
+		resetSolMaintCount();
+		lastSolMFail.setTime(thisSolMFail.getTime());
+	}else{
+		solmaintcounter++
+		lastSolMFail.setTime(thisSolMFail.getTime());
 		
-	//res.writeHead(200, {"Content-Type": "text/plain"});
-	//res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	//res.end();
-	
-	
+		//Send out sms at counts 5 and 10
+		if(solmaintcounter == 5) {
+			console.log("Send SMS 1");
+			}
+		if(solmaintcounter == 10){
+			console.log("SEND SMS 2 - reset dyno");
+		}	
+		console.log("Solaro Maintenance Hit Count: "+solmaintcounter);
+	}
+		
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
 	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
-	'</head>\n<body>\n<h1><center>Solaro Maintenance</center></h1>\n' +
-	'<div id="content"><p><center>We are currently upgrading</p><ul><li>We are upgrading Solaro<br> in order to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>Solaro is undergoing maintenance</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
 	'\n</body>\n</html>');
 	res.end();
 	
@@ -190,24 +249,13 @@ app.get('/maintenance_solaro', function(req, res){
 
 //5.SECURO MAINTENANCE
 app.get('/maintenance_securo', function(req, res){
-  var nodemailer = require("nodemailer");
-
-	// create reusable transport method (opens pool of SMTP connections)
-	var smtpTransport = nodemailer.createTransport("SMTP",{
-    	service: "Gmail",
-    	auth: {
-        	user: "solaroerror@crri.co.in",
-        	pass: "3xt3rm1n80r"
-    	}
-	});
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
 		to: "error_notification@crri.co.in",
-    	subject: "Securo Maintenance Page Accessed", // Subject line
+    	subject: "Securo Maintenance Error Page Accessed", // Subject line
     	text: "Securo Maintenance Page Accessed", // plaintext body
-		html: "<b>Securo app maintenance page accessed</b>" // html body
-
+		html: "<b>Securo Maintenance Page Accessed</b>" // html body
 	}
 	
 	smtpTransport.sendMail(mailOptions, function(error, res){
@@ -218,21 +266,39 @@ app.get('/maintenance_securo', function(req, res){
    			}
     	smtpTransport.close();
 	});
-		
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(" An application error has occurred while processing your request.\n Please press the back button and try again. \n\n We have been notified and are working on a solution to this error. \n\n Thank you.");
-	res.end();
 	
-	/*
+	function resetSecMaintCount() {
+		secmaintcounter = 0;
+	}
+	
+	var thisSecMFail = new Date();
+	
+	//If 10 minutes have passed since last failure, reset the counter to 0. Emergency over.
+	if((thisSecMFail.getTime() - lastSecMFail.getTime()) > 600000){
+		resetSecMaintCount();
+		lastSecMFail.setTime(thisSecMFail.getTime());
+	}else{
+		secmaintcounter++
+		lastSecMFail.setTime(thisSecMFail.getTime());
+		
+		//Send out sms at counts 5 and 10
+		if(secmaintcounter == 5) {
+			console.log("Send SMS 1");
+			}
+		if(secmaintcounter == 10){
+			console.log("SEND SMS 2 - reset dyno");
+		}	
+		console.log("Securo Maintenance Hit Count: "+secmaintcounter);
+	}
+		
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write('<!doctype html>\n<html lang="en">\n' +
 	'<head>\n<meta charset="utf-8">\n<title>Request Timed Out</title>\n' +
 	'<style type="text/css">* {font-family:arial, sans-serif;}</style>\n' +
-	'</head>\n<body>\n<h1><center>Solaro Maintenance</center></h1>\n' +
-	'<div id="content"><p><center>We are currently upgrading</p><ul><li>We are upgrading Solaro<br> in order to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
+	'</head>\n<body>\n<h1><center>Your Request has Timed Out</center></h1>\n' +
+	'<div id="content"><p><center>Securo is undergoing maintenance</p><ul><li>Our administrators have been notified, and are<br> working hard to enhance your Solaro experience.<br><br>Thanks for your patience.</center></li></ul></div>' +
 	'\n</body>\n</html>');
 	res.end();
-	*/
 });
 
 
