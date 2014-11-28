@@ -88,6 +88,15 @@ app.get('/solaro', function(req, res){
 			}, function(err, message) { 
 			console.log("SMS 5x: "+message.sid); 
 			});
+			
+			//Send SMS To Mat: Failure X 5
+			client.messages.create({ 
+				to: "7807082507", 
+				from: "+15874104849", 
+				body: "Solaro Error Count: 5",   
+			}, function(err, message) { 
+			console.log("SMS 5x: "+message.sid); 
+			});
 		}
 		if(solarocounter == 10){
 			//Send SMS To Eric: Failure X 10
@@ -106,6 +115,15 @@ app.get('/solaro', function(req, res){
 				body: "Solaro Error Count: 10",   
 			}, function(err, message) { 
 			console.log("SMS 10x: "+message.sid); 
+			});
+			
+				//Send SMS To Mat: Failure X 10
+			client.messages.create({ 
+				to: "7807082507", 
+				from: "+15874104849", 
+				body: "Solaro Error Count: 10",   
+			}, function(err, message) { 
+			console.log("SMS 5x: "+message.sid); 
 			});
 		}	
 		console.log("Solaro Error Count: "+solarocounter);
