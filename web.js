@@ -16,6 +16,11 @@ var lastSecMFail = new Date();
 
 var nodemailer = require("nodemailer");
   
+// Twilio Credentials 
+var accountSid = 'ACa3486b647db1bf511656cfc16db1f031'; 
+var authToken = 'fa0a2c223311565043dfe761f840e005'; 
+//require the Twilio module and create a REST client 
+var client = require('twilio')(accountSid, authToken);   
   // create reusable transport method (opens pool of SMTP connections)
   var smtpTransport = nodemailer.createTransport("SMTP",{
     	service: "Gmail",
@@ -32,7 +37,8 @@ app.get('/solaro', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-		to: "error_notification@crri.co.in",
+		//to: "error_notification@crri.co.in",
+		to: "emorris@castlerockresearch.com",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
 		html: "<b>Solaro app error page accessed</b>" // html body
@@ -65,10 +71,42 @@ app.get('/solaro', function(req, res){
 		
 		//Send out sms at counts 5 and 10
 		if(solarocounter == 5) {
-			console.log("Send SMS 1");
-			}
+//Send SMS To Eric: Failure X 5
+			client.messages.create({ 
+				to: "7809994413",
+				from: "+15874104849", 
+				body: "Solaro Error Count: 5",   
+			}, function(err, message) { 
+			console.log("SMS 5x: "+message.sid); 
+			});
+			
+			//Send SMS To Deborah: Failure X 5
+			/*client.messages.create({ 
+				to: "7802897695", 
+				from: "+15874104849", 
+				body: "Solaro Error Count: 5",   
+			}, function(err, message) { 
+			console.log("SMS 5x: "+message.sid); 
+			});*/
+		}
 		if(solarocounter == 10){
-			console.log("SEND SMS 2 please reset dyno");
+			//Send SMS To Eric: Failure X 10
+			client.messages.create({ 
+				to: "7809994413", 
+				from: "+15874104849", 
+				body: "Solaro Error Count: 10",   
+			}, function(err, message) { 
+			console.log("SMS 10x: "+message.sid); 
+			});
+			
+			//Send SMS To Deborah: Failure X 10
+			client.messages.create({ 
+				to: "7802897695", 
+				from: "+15874104849", 
+				body: "Solaro Error Count: 10",   
+			}, function(err, message) { 
+			console.log("SMS 10x: "+message.sid); 
+			});
 		}	
 		console.log("Solaro Error Count: "+solarocounter);
 	}
