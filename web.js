@@ -37,8 +37,8 @@ app.get('/solaro', function(req, res){
 
 	var mailOptions = {
     	from: "Solaro Error<solaroerror@castlerockresearch.com>", // sender address
-		//to: "error_notification@crri.co.in",
-		to: "emorris@castlerockresearch.com",
+		to: "error_notification@crri.co.in",
+		//to: "emorris@castlerockresearch.com",
     	subject: "Solaro Error Page Accessed", // Subject line
     	text: "Solaro Error Page Accessed", // plaintext body
 		html: "<b>Solaro app error page accessed</b>" // html body
@@ -81,13 +81,13 @@ app.get('/solaro', function(req, res){
 			});
 			
 			//Send SMS To Deborah: Failure X 5
-			/*client.messages.create({ 
+			client.messages.create({ 
 				to: "7802897695", 
 				from: "+15874104849", 
 				body: "Solaro Error Count: 5",   
 			}, function(err, message) { 
 			console.log("SMS 5x: "+message.sid); 
-			});*/
+			});
 		}
 		if(solarocounter == 10){
 			//Send SMS To Eric: Failure X 10
